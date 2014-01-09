@@ -319,6 +319,18 @@
       </manifest>
       <metainf dir="${hive.root}" includes="LICENSE,NOTICE"/>
     </jar>
+    <jar
+      jarfile="${build.dir}/hive-ql-${version}.jar"
+      basedir="${build.classes}">
+      <manifest>
+        <!-- Not putting these in their own manifest section, since that inserts
+        a new-line, which breaks the reading of the attributes. -->
+        <attribute name="Implementation-Title" value="Hive"/>
+        <attribute name="Implementation-Version" value="${version}"/>
+        <attribute name="Implementation-Vendor" value="Apache"/>
+      </manifest>
+      <metainf dir="${hive.root}" includes="LICENSE,NOTICE"/>
+    </jar>
     <ivy:publish settingsRef="${ant.project.name}.ivy.settings"
                  resolver="local" pubrevision="${version}" overwrite="true"
                  artifactspattern="${build.dir}/${ivy.publish.pattern}"/>
